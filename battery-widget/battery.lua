@@ -27,7 +27,7 @@ local function worker(user_args)
     local args = user_args or {}
 
     local font = args.font or 'Play 8'
-    local path_to_icons = args.path_to_icons or "/usr/share/icons/Arc/status/symbolic/"
+    local path_to_icons = args.path_to_icons or "/usr/share/icons/Adwaita/symbolic/status/"
     local show_current_level = args.show_current_level or false
     local margin_left = args.margin_left or 0
     local margin_right = args.margin_right or 0
@@ -118,7 +118,7 @@ local function worker(user_args)
         }
     end
     local last_battery_check = os.time()
-    local batteryType = "battery-good-symbolic"
+    local batteryType = "battery-level-100"
 
     watch("acpi -i", timeout,
     function(widget, stdout)
@@ -166,24 +166,29 @@ local function worker(user_args)
             level_widget.text = string.format('%d%%', charge)
         end
 
-        if (charge >= 1 and charge < 15) then
-            batteryType = "battery-empty%s-symbolic"
+        if (charge >= 1 and charge < 10) then
+            batteryType = "battery-level-10"
             if enable_battery_warning and status ~= 'Charging' and os.difftime(os.time(), last_battery_check) > 300 then
                 -- if 5 minutes have elapsed since the last warning
                 last_battery_check = os.time()
 
                 show_battery_warning()
             end
-        elseif (charge >= 15 and charge < 40) then batteryType = "battery-caution%s-symbolic"
-        elseif (charge >= 40 and charge < 60) then batteryType = "battery-low%s-symbolic"
-        elseif (charge >= 60 and charge < 80) then batteryType = "battery-good%s-symbolic"
-        elseif (charge >= 80 and charge <= 100) then batteryType = "battery-full%s-symbolic"
+        elseif (charge >= 10 and charge < 20) then batteryType = "battery-level-10"
+        elseif (charge >= 20 and charge < 30) then batteryType = "battery-level-20"
+        elseif (charge >= 30 and charge < 40) then batteryType = "battery-level-30"
+        elseif (charge >= 40 and charge < 50) then batteryType = "battery-level-40"
+        elseif (charge >= 50 and charge < 60) then batteryType = "battery-level-50"
+        elseif (charge >= 60 and charge < 70) then batteryType = "battery-level-60"
+        elseif (charge >= 70 and charge < 80) then batteryType = "battery-level-70"
+        elseif (charge >= 80 and charge < 90) then batteryType = "battery-level-80"
+        elseif (charge >= 90 and charge < 100) then batteryType = "battery-level-90"
         end
 
         if status == 'Charging' then
-            batteryType = string.format(batteryType, '-charging')
+            batteryType = batteryType .. '-charging-symbolic'
         else
-            batteryType = string.format(batteryType, '')
+            batteryType = batteryType .. '-symbolic'
         end
 
         widget.icon:set_image(path_to_icons .. batteryType .. ".svg")
