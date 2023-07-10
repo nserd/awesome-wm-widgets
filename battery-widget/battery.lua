@@ -185,13 +185,8 @@ local function worker(user_args)
         elseif (charge >= 90 and charge < 100) then batteryType = "battery-level-90"
         end
 
-        if status == 'Charging' then
-            batteryType = batteryType .. '-charging-symbolic'
-        else
-            batteryType = batteryType .. '-symbolic'
-        end
-
-        widget.icon:set_image(path_to_icons .. batteryType .. ".svg")
+        local batteryTypeIcon = status == 'Charging' and batteryType .. '-charging-symbolic' or batteryType .. '-symbolic'
+        widget.icon:set_image(path_to_icons .. batteryTypeIcon .. ".svg")
 
         -- Update popup text
         -- battery_popup.text = string.gsub(stdout, "\n$", "")
