@@ -185,9 +185,9 @@ local function worker(user_args)
         elseif (charge >= 90 and charge < 100) then batteryType = "battery-level-90"
         end
 
-        if status == 'Charging' then
+        if status == 'Charging' and not string.find(batteryType, "-symbolic") then
             batteryType = batteryType .. '-charging-symbolic'
-        else
+        elseif not string.find(batteryType, "-symbolic") then
             batteryType = batteryType .. '-symbolic'
         end
 
