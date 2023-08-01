@@ -26,9 +26,9 @@ local battery_widget = {}
 local function worker(user_args)
     local args = user_args or {}
 
-    local font = args.font or 'Play 8'
+    -- local font = args.font or 'Play 8'
     local path_to_icons = args.path_to_icons or "/usr/share/icons/Adwaita/symbolic/status/"
-    local show_current_level = args.show_current_level or false
+    local show_current_level = args.show_current_level or true
     local margin_left = args.margin_left or 0
     local margin_right = args.margin_right or 0
 
@@ -64,7 +64,7 @@ local function worker(user_args)
         layout = wibox.container.place,
     }
     local level_widget = wibox.widget {
-        font = font,
+        -- font = font,
         widget = wibox.widget.textbox
     }
 
