@@ -82,10 +82,11 @@ local function worker(args)
     local popup_metrics	= args.popup_metrics or false
     local path_to_icons = args.path_to_icons or "/usr/share/icons/Adwaita/symbolic/status/"
 
-    local net_icon = wibox.widget.imagebox(path_to_icons .. getIcon(0))
     local net_text = wibox.widget.textbox()
     net_text.font = font
     net_text:set_text(" N/A ")
+    widget.icon(path_to_icons .. getIcon(0))
+
     local signal_level = 0
     local function net_update()
         awful.spawn.easy_async("awk 'NR==3 {printf \"%3.0f\" ,($3/70)*100}' /proc/net/wireless", function(stdout, stderr, reason, exit_code)
@@ -94,11 +95,11 @@ local function worker(args)
         if signal_level == nil then
             connected = false
             net_text:set_text(" N/A ")
-            net_icon:set_image(path_to_icons .. getIcon(0))
+            widget.icon:set_image(path_to_icons .. getIcon(0))
         else
             connected = true
             net_text:set_text(string.format("%"..indent.."d%%", signal_level))
-            net_icon:set_image(path_to_icons .. getIcon(signal_level))
+            widget.icon:set_image(path_to_icons .. getIcon(signal_level))
         end
     end
 
@@ -116,8 +117,6 @@ local function worker(args)
             end
             wireless:attach(widget,{onclick = onclick})
     end
-
-
 
     local function text_grabber()
         local msg = ""
