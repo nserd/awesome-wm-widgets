@@ -15,12 +15,12 @@ function dbg(message)
 end
 
 local function getIcon(level)
-    if level > 75 then icon = "network-wireless-signal-good-symbolic.svg" end
-    if level > 50 then icon = "network-wireless-signal-ok-symbolic.svg" end
-    if level > 25 then icon = "network-wireless-signal-weak-symbolic.svg" end
-    if level == 0 then icon = "network-wireless-offline-symbolic.svg" end
+    if level > 75 then return "network-wireless-signal-good-symbolic.svg" end
+    if level > 50 then return "network-wireless-signal-ok-symbolic.svg" end
+    if level > 25 then return "network-wireless-signal-weak-symbolic.svg" end
+    if level == 0 then return "network-wireless-offline-symbolic.svg" end
 
-    return icon
+    return "network-wireless-offline-symbolic.svg"
 end
 
 function net_stats(card,which)
