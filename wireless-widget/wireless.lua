@@ -161,8 +161,8 @@ local function worker(args)
                 "<span font_desc=\""..font.."\">"..
                 "┌["..interface.."]\n"..
                 "├ESSID:\t"..essid.."\n"..
-                "├IP:\t"..inet.."\n"..
-                "├BSSID:\t"..mac.."\n"..
+                -- "├IP:\t"..inet.."\n"..
+                -- "├BSSID:\t"..mac.."\n"..
                 ""..metrics_down..
                 ""..metrics_up..
                 ""..signal..
