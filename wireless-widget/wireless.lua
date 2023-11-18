@@ -160,9 +160,9 @@ local function worker(args)
             msg =
                 "<span font_desc=\""..font.."\">"..
                 "┌["..interface.."]\n"..
-                "├ESSID:\t\t"..essid.."\n"..
-                "├IP:\t\t"..inet.."\n"..
-                "├BSSID\t\t"..mac.."\n"..
+                "├ESSID:\t"..essid.."\n"..
+                "├IP:\t"..inet.."\n"..
+                "├BSSID:\t"..mac.."\n"..
                 ""..metrics_down..
                 ""..metrics_up..
                 ""..signal..
