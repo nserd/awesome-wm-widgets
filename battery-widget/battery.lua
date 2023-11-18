@@ -37,10 +37,10 @@ local function worker(user_args)
     local position = args.notification_position or "top_right"
     local timeout = args.timeout or 10
 
-    local warning_msg_title = args.warning_msg_title or 'Huston, we have a problem'
-    local warning_msg_text = args.warning_msg_text or 'Battery is dying'
-    local warning_msg_position = args.warning_msg_position or 'bottom_right'
-    local warning_msg_icon = args.warning_msg_icon or WIDGET_DIR .. '/spaceman.jpg'
+    local warning_msg_title = args.warning_msg_title or 'Low battery!'
+    local warning_msg_text = args.warning_msg_text or 'Connect the charger'
+    local warning_msg_position = args.warning_msg_position or 'top_right'
+    local warning_msg_icon = args.warning_msg_icon or path_to_icons .. 'battery-caution-symbolic-40px.svg'
     local enable_battery_warning = args.enable_battery_warning
     if enable_battery_warning == nil then
         enable_battery_warning = true
@@ -111,8 +111,8 @@ local function worker(user_args)
             timeout = 25, -- show the warning for a longer time
             hover_timeout = 0.5,
             position = warning_msg_position,
-            bg = "#F06060",
-            fg = "#EEE9EF",
+            -- bg = "#F06060",
+            -- fg = "#EEE9EF",
             width = 300,
             screen = mouse.screen
         }
