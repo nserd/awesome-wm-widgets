@@ -118,7 +118,7 @@ local function worker(user_args)
         }
     end
     local last_battery_check = os.time()
-    local batteryType = "battery-level-100"
+    -- local batteryType = "battery-level-100"
 
     watch("acpi -i", timeout,
     function(widget, stdout)
@@ -183,6 +183,7 @@ local function worker(user_args)
         elseif (charge >= 70 and charge < 80) then batteryType = "battery-level-70"
         elseif (charge >= 80 and charge < 90) then batteryType = "battery-level-80"
         elseif (charge >= 90 and charge < 100) then batteryType = "battery-level-90"
+        elseif (charge == 100) then batteryType = "battery-level-100"
         end
 
         if status == 'Charging' and not string.find(batteryType, "-symbolic") then
