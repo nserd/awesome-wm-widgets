@@ -160,13 +160,14 @@ local function worker(args)
             msg =
                 "<span font_desc=\""..font.."\">"..
                 "┌["..interface.."]\n"..
-                "├ESSID: "..essid.."\n"..
-                "├IP:    "..inet.."\n"..
-                "├BSSID: "..mac.."\n"..
+                "├ESSID:\t\t"..essid.."\n"..
+                "├IP:\t\t"..inet.."\n"..
+                "├BSSID\t\t"..mac.."\n"..
                 ""..metrics_down..
                 ""..metrics_up..
                 ""..signal..
-                "└Bit rate: "..bitrate.."</span>"
+                "└Bit rate:\t"..bitrate.."</span>"
+
 
         else
             msg = "Wireless network is disconnected"
