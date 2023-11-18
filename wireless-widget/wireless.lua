@@ -97,7 +97,7 @@ local function worker(args)
             net_icon:set_image(path_to_icons .. getIcon(0))
         else
             connected = true
-            -- net_text:set_text(string.format("%"..indent.."d%%", signal_level))
+            net_text:set_text(string.format("%"..indent.."d%%", signal_level))
             net_icon:set_image(path_to_icons .. getIcon(signal_level))
         end
     end
@@ -107,12 +107,12 @@ local function worker(args)
       return true end )
 
     widgets_table["imagebox"]	= net_icon
-    widgets_table["textbox"]	= net_text
+    -- widgets_table["textbox"]	= net_text
     if widget then
             widget:add(net_icon)
             -- Hide the text when we want to popup the signal instead
             if not popup_signal then
-                    widget:add(net_text)
+                    -- widget:add(net_text)
             end
             wireless:attach(widget,{onclick = onclick})
     end
