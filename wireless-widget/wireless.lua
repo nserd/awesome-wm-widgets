@@ -97,7 +97,7 @@ local function worker(args)
             net_icon:set_image(path_to_icons .. getIcon(0))
         else
             connected = true
-            net_text:set_text(string.format("%"..indent.."d%%", signal_level))
+            -- net_text:set_text(string.format("%"..indent.."d%%", signal_level))
             net_icon:set_image(path_to_icons .. getIcon(signal_level))
         end
     end
@@ -116,8 +116,6 @@ local function worker(args)
             end
             wireless:attach(widget,{onclick = onclick})
     end
-
-
 
     local function text_grabber()
         local msg = ""
